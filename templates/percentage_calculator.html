@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Marks Percentage Calculator</h2>
+    <label for="totalMarks">Total Marks: </label>
+    <input type="number" id="totalMarks" placeholder="Enter total marks"><br>
+
+    <label for="obtainedMarks">Obtained Marks: </label>
+    <input type="number" id="obtainedMarks" placeholder="Enter obtained marks"><br>
+
+    <button onclick="calculatePercentage()">Calculate Percentage</button>
+    <p id="result"></p>
+
+    <h2>Percentage Calculator in Common Phrases</h2>
+    <label for="whatis">what is </label>
+    <input type="number" id="perc" placeholder="%"> of <input type="number" id="amt" placeholder=""> 
+    <button onclick="calculatePercentage2()">Calculate</button>
+
+    <p></p>
+    
+    <input type="number" id="amt11" placeholder=""><label for="whatis"> is what % of </label> <input type="number" id="amt22" placeholder=""> 
+    <button onclick="calculatePercentage3()">Calculate</button>
+
+    <p></p>  
+    <input type="number" id="amt111" placeholder=""><label for="whatis"> is </label> <input type="number" id="perc111" placeholder=""> of what
+    <button onclick="calculatePercentage4()">Calculate</button>
+
+
+    <p></p>
+    
+ 
+    <input type="number" id="amt3" placeholder=""><label for="whatis"> increase/decrease</label> <input type="number" id="perc3" placeholder="%"> of what
+    <button onclick="calculatePercentage5('increase')">Calculate Increase</button> <button onclick="calculatePercentage5('decrease')">Calculate Decrease</button>
+    
+    <p></p> 
+    
+    <p id="result2"></p>
+
+    
+    <script>
+        function calculatePercentage() {
+            // Get input values
+            const totalMarks = document.getElementById('totalMarks').value;
+            const obtainedMarks = document.getElementById('obtainedMarks').value;
+            
+            // Validate input
+            if (totalMarks <= 0 || obtainedMarks < 0 || obtainedMarks > totalMarks) {
+                document.getElementById('result').innerText = 'Please enter valid marks.';
+                return;
+            }
+            
+            // Calculate percentage
+            const percentage = (obtainedMarks / totalMarks) * 100;
+            
+            // Display result
+            document.getElementById('result').innerText = `Percentage: ${percentage.toFixed(2)}%`;
+        }
+
+        function calculatePercentage2() {
+            // Get input values
+            const perc = document.getElementById('perc').value;
+            const amt = document.getElementById('amt').value;
+            
+            // Validate input
+            if (perc <= 0 || amt < 0 ) {
+                document.getElementById('result2').innerText = 'Please enter valid input.';
+                return;
+            }
+            
+            // Calculate percentage
+            const res = (perc / 100) * amt;
+            
+            // Display result
+            document.getElementById('result2').innerText = `Amount is : ${res.toFixed(2)}`;
+        }
+        function calculatePercentage3() {
+            // Get input values
+            const amt11 = document.getElementById('amt11').value;
+            const amt22 = document.getElementById('amt22').value;
+            
+            // Validate input
+            if (amt11 <= 0 || amt22 < 0 ) {
+                document.getElementById('result2').innerText = 'Please enter valid input.';
+                return;
+            }
+            
+            // Calculate percentage
+            const res2 = (amt11 / amt22) * 100;
+            
+            // Display result
+            document.getElementById('result2').innerText = `Amount is : ${res2.toFixed(2)}%`;
+        }
+
+        function calculatePercentage4() {
+            // Get input values
+            const amt111 = document.getElementById('amt111').value;
+            const perc111 = document.getElementById('perc111').value;
+            
+            // Validate input
+            if (amt111 <= 0 || perc111 < 0 ) {
+                document.getElementById('result2').innerText = 'Please enter valid input.';
+                return;
+            }
+            
+            // Calculate percentage
+            const res2 = (amt111 / perc111) * 100;
+            
+            // Display result
+            document.getElementById('result2').innerText = `Amount is : ${res2.toFixed(2)}%`;
+        }
+
+        function calculatePercentage5(type) {
+            // Get input values
+            const amt3 = document.getElementById('amt3').value;
+            const perc3 = document.getElementById('perc3').value;
+            
+            // Validate input
+            if (amt3 <= 0 || perc3 < 0 ) {
+                document.getElementById('result2').innerText = 'Please enter valid input.';
+                return;
+            }
+            if(type=='increase'){
+                var res3 = (amt3 *(1+ (perc3/100)));
+            
+            }else{
+                var res3 = (amt3 *(1- (perc3/100)));
+            
+            }
+            // Calculate percentage
+            
+            // Display result
+            document.getElementById('result2').innerText = `Amount is : ${res3.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

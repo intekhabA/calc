@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Hike Percentage Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Salary Hike Percentage Calculator</h2>
+    <label for="currentSalary">Current Salary: </label>
+    <input type="number" id="currentSalary" placeholder="Enter current salary"><br>
+
+    <label for="newSalary">New Salary: </label>
+    <input type="number" id="newSalary" placeholder="Enter new salary"><br>
+
+    <button onclick="calculateHikePercentage()">Calculate Hike Percentage</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateHikePercentage() {
+            const currentSalary = parseFloat(document.getElementById('currentSalary').value);
+            const newSalary = parseFloat(document.getElementById('newSalary').value);
+            
+            // Validate input
+            if (currentSalary <= 0 || newSalary <= 0) {
+                document.getElementById('result').innerText = 'Please enter valid salary values.';
+                return;
+            }
+            
+            // Calculate hike percentage
+            const hike = ((newSalary - currentSalary) / currentSalary) * 100;
+            
+            // Display result
+            document.getElementById('result').innerText = `Salary hike percentage: ${hike.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>
